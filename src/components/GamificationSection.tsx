@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
-import { Trophy, Flame, Users, Target, Medal, Swords } from "lucide-react";
+import { Trophy, Flame, Users, Target, Medal, Swords, Crown, Star } from "lucide-react";
 
 const badges = [
-  { icon: Flame, label: "7-Day Streak", color: "text-orange-400" },
-  { icon: Trophy, label: "First 5K", color: "text-yellow-400" },
-  { icon: Medal, label: "Iron Will", color: "text-primary" },
-  { icon: Target, label: "Goal Crusher", color: "text-accent" },
+  { icon: Flame, label: "7-Day Streak", desc: "Work out 7 days straight", color: "text-neon-green", bg: "bg-neon-green/15" },
+  { icon: Trophy, label: "First 5K", desc: "Complete your first 5K run", color: "text-neon-blue", bg: "bg-neon-blue/15" },
+  { icon: Medal, label: "Iron Will", desc: "30 workouts in a month", color: "text-neon-purple", bg: "bg-neon-purple/15" },
+  { icon: Star, label: "Top Performer", desc: "Rank top 10 in a challenge", color: "text-neon-cyan", bg: "bg-neon-cyan/15" },
 ];
 
 const leaderboard = [
-  { rank: 1, name: "Sarah M.", points: 12_450, avatar: "SM" },
+  { rank: 1, name: "Sarah M.", points: 12_450, avatar: "SM", badge: Crown },
   { rank: 2, name: "James K.", points: 11_890, avatar: "JK" },
   { rank: 3, name: "Alex R.", points: 10_320, avatar: "AR" },
   { rank: 4, name: "You", points: 9_870, avatar: "YO", highlight: true },
@@ -17,23 +17,21 @@ const leaderboard = [
 
 const GamificationSection = () => {
   return (
-    <section className="py-24 relative">
-      <div className="container">
+    <section id="community" className="py-28 relative">
+      <div className="absolute inset-0 gradient-mesh" />
+      <div className="container relative">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 mb-6">
-              <Swords className="h-3.5 w-3.5 text-primary" />
-              <span className="text-xs font-medium text-primary">Gamification</span>
-            </div>
+            <span className="text-xs font-bold text-accent uppercase tracking-[0.2em] mb-4 block">Community</span>
 
-            <h2 className="text-4xl sm:text-5xl font-display font-bold mb-4">
+            <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">
               Stay Motivated. <span className="text-gradient-primary">Stay Ahead.</span>
             </h2>
-            <p className="text-muted-foreground mb-8 max-w-md leading-relaxed">
+            <p className="text-muted-foreground mb-10 max-w-md leading-relaxed">
               Earn badges, compete in challenges, climb leaderboards, and connect with a community that pushes you forward.
             </p>
 
@@ -45,10 +43,13 @@ const GamificationSection = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="glass-surface rounded-xl p-4 flex items-center gap-3 hover:border-primary/30 transition-all"
+                  className="glass-card-hover p-4 group"
                 >
-                  <b.icon className={`h-8 w-8 ${b.color}`} />
-                  <span className="text-sm font-medium text-foreground">{b.label}</span>
+                  <div className={`w-10 h-10 rounded-xl ${b.bg} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300`}>
+                    <b.icon className={`h-5 w-5 ${b.color}`} />
+                  </div>
+                  <span className="text-sm font-bold text-foreground block">{b.label}</span>
+                  <span className="text-xs text-muted-foreground">{b.desc}</span>
                 </motion.div>
               ))}
             </div>
@@ -58,34 +59,48 @@ const GamificationSection = () => {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="glass-surface rounded-2xl p-6"
+            className="glass-card p-6 neon-border"
           >
             <div className="flex items-center gap-2 mb-6">
               <Users className="h-5 w-5 text-primary" />
-              <h3 className="font-display font-semibold text-foreground">Weekly Leaderboard</h3>
+              <h3 className="font-display font-bold text-foreground">Weekly Leaderboard</h3>
+              <span className="ml-auto text-xs text-muted-foreground bg-secondary px-2.5 py-1 rounded-full">Week 11</span>
             </div>
 
             <div className="space-y-3">
-              {leaderboard.map((user) => (
-                <div
+              {leaderboard.map((user, i) => (
+                <motion.div
                   key={user.rank}
-                  className={`flex items-center gap-4 p-3 rounded-xl transition-all ${
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className={`flex items-center gap-4 p-3.5 rounded-xl transition-all duration-300 ${
                     user.highlight
-                      ? "bg-primary/10 border border-primary/30"
-                      : "bg-muted/30"
+                      ? "bg-primary/10 border border-primary/30 glow-primary-sm"
+                      : "bg-secondary/40 hover:bg-secondary/60"
                   }`}
                 >
-                  <span className={`font-display font-bold text-lg w-6 text-center ${
-                    user.rank === 1 ? "text-yellow-400" : user.rank === 2 ? "text-secondary-foreground/60" : user.rank === 3 ? "text-orange-400" : "text-primary"
+                  <span className={`font-display font-extrabold text-lg w-6 text-center ${
+                    user.rank === 1 ? "text-neon-green" : user.rank === 2 ? "text-neon-blue" : user.rank === 3 ? "text-neon-purple" : "text-primary"
                   }`}>
                     {user.rank}
                   </span>
-                  <div className="w-9 h-9 rounded-full bg-secondary flex items-center justify-center text-xs font-bold text-secondary-foreground">
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold ${
+                    user.highlight ? "bg-primary/20 text-primary" : "bg-secondary text-secondary-foreground"
+                  }`}>
                     {user.avatar}
                   </div>
-                  <span className="flex-1 font-medium text-foreground text-sm">{user.name}</span>
-                  <span className="text-sm text-muted-foreground font-display">{user.points.toLocaleString()} pts</span>
-                </div>
+                  <div className="flex-1">
+                    <span className="font-semibold text-foreground text-sm block">{user.name}</span>
+                    {user.highlight && <span className="text-xs text-primary">That's you!</span>}
+                  </div>
+                  <div className="text-right">
+                    <span className="text-sm font-display font-bold text-foreground">{user.points.toLocaleString()}</span>
+                    <span className="text-xs text-muted-foreground block">pts</span>
+                  </div>
+                  {"badge" in user && user.badge && <user.badge className="h-4 w-4 text-neon-green" />}
+                </motion.div>
               ))}
             </div>
           </motion.div>
