@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Clock, Flame, Zap, TrendingUp } from "lucide-react";
+import { Clock, Flame, Zap, TrendingUp, Heart } from "lucide-react";
 
 const workouts = [
   {
@@ -7,47 +7,60 @@ const workouts = [
     duration: "25 min",
     calories: "320 kcal",
     level: "Intermediate",
-    color: "neon-blue",
+    accent: "bg-ocean",
+    accentLight: "bg-ocean/8",
+    accentText: "text-ocean",
     icon: Zap,
     tags: ["Cardio", "Full Body"],
+    trainer: "Coach Maya",
   },
   {
     title: "Strength Flow",
     duration: "45 min",
     calories: "450 kcal",
     level: "Advanced",
-    color: "neon-green",
+    accent: "bg-emerald",
+    accentLight: "bg-emerald/8",
+    accentText: "text-emerald",
     icon: TrendingUp,
     tags: ["Strength", "Upper Body"],
+    trainer: "Coach Jordan",
   },
   {
     title: "Core Ignite",
     duration: "20 min",
     calories: "180 kcal",
     level: "Beginner",
-    color: "neon-purple",
-    icon: Flame,
+    accent: "bg-coral",
+    accentLight: "bg-coral/8",
+    accentText: "text-coral",
+    icon: Heart,
     tags: ["Core", "Flexibility"],
+    trainer: "Coach Priya",
   },
 ];
 
 const WorkoutCardsSection = () => {
   return (
-    <section id="workouts" className="py-28 relative">
+    <section id="workouts" className="py-24 relative">
       <div className="absolute inset-0 gradient-mesh-intense" />
       <div className="container relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-14"
         >
-          <span className="text-xs font-bold text-accent uppercase tracking-[0.2em] mb-4 block">Workouts</span>
-          <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">
-            Interactive <span className="text-gradient-primary">Workout Cards</span>
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <div className="accent-dot" />
+            <span className="text-xs font-bold text-accent uppercase tracking-[0.15em]">Handpicked Workouts</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold mb-4 text-foreground">
+            Crafted by real trainers,{" "}
+            <span className="text-gradient-fresh">for real people</span>
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            Browse AI-curated routines that adapt in real time. Tap a card to start your session.
+          <p className="text-muted-foreground max-w-xl mx-auto leading-relaxed">
+            Every workout is designed by certified coaches who care about your form, safety, and progress.
           </p>
         </motion.div>
 
@@ -55,24 +68,24 @@ const WorkoutCardsSection = () => {
           {workouts.map((w, i) => (
             <motion.div
               key={w.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className={`glass-card p-6 cursor-pointer group relative overflow-hidden`}
+              transition={{ delay: i * 0.12 }}
+              className="card-elevated-hover p-6 cursor-pointer group relative overflow-hidden"
             >
-              {/* Glow accent on hover */}
-              <div className={`absolute top-0 left-0 right-0 h-1 bg-${w.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-2xl`} />
+              {/* Top accent bar */}
+              <div className={`absolute top-0 left-0 right-0 h-1 ${w.accent} rounded-t-2xl`} />
 
-              <div className="flex items-center justify-between mb-5">
-                <div className={`w-11 h-11 rounded-xl bg-${w.color}/15 flex items-center justify-center`}>
-                  <w.icon className={`h-5 w-5 text-${w.color}`} />
+              <div className="flex items-center justify-between mb-5 pt-1">
+                <div className={`w-11 h-11 rounded-xl ${w.accentLight} flex items-center justify-center`}>
+                  <w.icon className={`h-5 w-5 ${w.accentText}`} />
                 </div>
-                <span className="text-xs font-bold text-muted-foreground bg-secondary px-3 py-1 rounded-full">{w.level}</span>
+                <span className="text-xs font-semibold text-muted-foreground bg-secondary px-3 py-1 rounded-full">{w.level}</span>
               </div>
 
-              <h3 className="font-display font-bold text-xl text-foreground mb-3">{w.title}</h3>
+              <h3 className="font-display font-bold text-xl text-foreground mb-1">{w.title}</h3>
+              <p className="text-xs text-muted-foreground mb-4">by {w.trainer}</p>
 
               <div className="flex items-center gap-4 mb-5 text-sm text-muted-foreground">
                 <span className="flex items-center gap-1.5">
@@ -87,14 +100,11 @@ const WorkoutCardsSection = () => {
 
               <div className="flex gap-2">
                 {w.tags.map((tag) => (
-                  <span key={tag} className="text-xs font-medium text-secondary-foreground bg-secondary/80 px-2.5 py-1 rounded-lg">
+                  <span key={tag} className="text-xs font-medium text-secondary-foreground bg-secondary px-2.5 py-1 rounded-lg">
                     {tag}
                   </span>
                 ))}
               </div>
-
-              {/* Hover gradient overlay */}
-              <div className={`absolute inset-0 bg-gradient-to-t from-${w.color}/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none`} />
             </motion.div>
           ))}
         </div>

@@ -8,15 +8,15 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90 glow-primary-sm hover:glow-primary",
+        default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-soft hover:shadow-soft-lg",
         destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border border-primary/40 text-primary bg-transparent hover:bg-primary/10 hover:border-primary",
+        outline: "border-2 border-primary/30 text-primary bg-transparent hover:bg-primary/5 hover:border-primary/50",
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-secondary hover:text-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        hero: "bg-primary text-primary-foreground hover:bg-primary/90 glow-primary text-base px-8 py-6 rounded-2xl font-bold",
-        heroOutline: "border-2 border-primary/40 text-foreground bg-primary/5 hover:bg-primary/10 hover:border-primary/60 text-base px-8 py-6 rounded-2xl font-bold",
-        neonGreen: "bg-accent text-accent-foreground hover:bg-accent/90 glow-green text-base px-8 py-6 rounded-2xl font-bold",
+        hero: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-soft-lg hover:shadow-soft-lg text-base px-8 py-6 rounded-2xl font-bold",
+        heroOutline: "border-2 border-foreground/15 text-foreground bg-card hover:bg-secondary hover:border-foreground/25 text-base px-8 py-6 rounded-2xl font-bold shadow-soft",
+        accent: "bg-accent text-accent-foreground hover:bg-accent/90 shadow-soft text-base px-8 py-6 rounded-2xl font-bold",
       },
       size: {
         default: "h-10 px-4 py-2",
