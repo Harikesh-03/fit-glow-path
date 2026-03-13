@@ -4,65 +4,68 @@ import { Brain, Watch, Shield, Salad, Dumbbell, BarChart3 } from "lucide-react";
 const features = [
   {
     icon: Brain,
-    title: "AI Recommendations",
-    description: "Adaptive plans that evolve with your fitness level, preferences, and progress data.",
-    gradient: "from-neon-blue/20 to-neon-cyan/10",
-    iconColor: "text-neon-blue",
+    title: "Smart Recommendations",
+    description: "Plans that learn from your habits, evolve with your progress, and actually understand your goals.",
+    color: "text-ocean",
+    bg: "bg-ocean/8",
   },
   {
     icon: Watch,
     title: "Wearable Sync",
-    description: "Seamless integration with Apple Watch, Fitbit, Garmin and 50+ devices.",
-    gradient: "from-neon-green/20 to-neon-cyan/10",
-    iconColor: "text-neon-green",
+    description: "Connects effortlessly with Apple Watch, Fitbit, Garmin, and 50+ devices you already own.",
+    color: "text-teal",
+    bg: "bg-teal/8",
   },
   {
     icon: Dumbbell,
     title: "Custom Workouts",
-    description: "Personalized routines built around your goals, equipment, and time.",
-    gradient: "from-neon-purple/20 to-neon-blue/10",
-    iconColor: "text-neon-purple",
+    description: "Routines built around your life — your goals, your equipment, your available time.",
+    color: "text-lavender",
+    bg: "bg-lavender/8",
   },
   {
     icon: Salad,
-    title: "Smart Nutrition",
-    description: "Meal plans tailored to your dietary needs, allergies, and caloric targets.",
-    gradient: "from-neon-green/20 to-neon-green/5",
-    iconColor: "text-neon-green",
+    title: "Nutrition Guidance",
+    description: "Meal ideas that respect your dietary preferences, allergies, and caloric needs. No one-size-fits-all.",
+    color: "text-emerald",
+    bg: "bg-emerald/8",
   },
   {
     icon: BarChart3,
-    title: "Progress Analytics",
-    description: "Beautiful dashboards tracking strength, endurance, and body composition.",
-    gradient: "from-neon-cyan/20 to-neon-blue/10",
-    iconColor: "text-neon-cyan",
+    title: "Progress You Can See",
+    description: "Clean dashboards showing your real gains — strength, endurance, body composition, all in one place.",
+    color: "text-coral",
+    bg: "bg-coral/8",
   },
   {
     icon: Shield,
-    title: "Privacy First",
-    description: "End-to-end encryption, HIPAA-aligned practices, full data control.",
-    gradient: "from-neon-blue/15 to-neon-purple/10",
-    iconColor: "text-neon-blue",
+    title: "Your Data, Your Rules",
+    description: "End-to-end encryption and HIPAA-aligned practices. We take your privacy seriously.",
+    color: "text-ocean",
+    bg: "bg-ocean/8",
   },
 ];
 
 const FeaturesSection = () => {
   return (
-    <section id="features" className="py-28 relative">
+    <section id="features" className="py-24 relative">
       <div className="absolute inset-0 gradient-mesh" />
       <div className="container relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-14"
         >
-          <span className="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-4 block">Features</span>
-          <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">
-            Everything You Need to <span className="text-gradient-primary">Perform</span>
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <div className="accent-dot" />
+            <span className="text-xs font-bold text-primary uppercase tracking-[0.15em]">What We Offer</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold mb-4 text-foreground">
+            Everything to help you <span className="text-gradient-primary">thrive</span>
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            A complete ecosystem designed to support every aspect of your fitness journey.
+          <p className="text-muted-foreground max-w-xl mx-auto leading-relaxed">
+            We built every feature with real people in mind — because fitness should feel human, not robotic.
           </p>
         </motion.div>
 
@@ -73,13 +76,13 @@ const FeaturesSection = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              className="glass-card-hover p-6 group"
+              transition={{ delay: i * 0.06 }}
+              className="card-elevated-hover p-6 group"
             >
-              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${f.gradient} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
-                <f.icon className={`h-6 w-6 ${f.iconColor}`} />
+              <div className={`w-11 h-11 rounded-xl ${f.bg} flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-300`}>
+                <f.icon className={`h-5 w-5 ${f.color}`} />
               </div>
-              <h3 className="font-display font-bold text-lg mb-2 text-foreground">{f.title}</h3>
+              <h3 className="font-display font-bold text-base mb-2 text-foreground">{f.title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{f.description}</p>
             </motion.div>
           ))}
