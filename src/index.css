@@ -123,7 +123,7 @@
   }
 
   .card-elevated-hover {
-    @apply card-elevated transition-all duration-400;
+    @apply card-elevated transition-all duration-300;
   }
   .card-elevated-hover:hover {
     box-shadow: 0 4px 12px hsl(220 25% 14% / 0.06),
