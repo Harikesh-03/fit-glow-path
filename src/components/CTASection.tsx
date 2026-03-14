@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight, Heart } from "lucide-react";
@@ -34,10 +35,12 @@ const CTASection = () => {
               Join 50,000+ people who chose a fitness platform that feels personal. Start today — your future self will thank you.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button variant="accent">
-                Start Your Free Trial
-                <ArrowRight className="h-5 w-5" />
-              </Button>
+              <Link to="/auth">
+                <Button variant="accent">
+                  Start Your Free Trial
+                  <ArrowRight className="h-5 w-5" />
+                </Button>
+              </Link>
             </div>
           </div>
         </motion.div>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Heart, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -26,8 +27,8 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-3">
-          <Button variant="ghost" size="sm">Sign In</Button>
-          <Button size="sm">Get Started</Button>
+          <Link to="/auth"><Button variant="ghost" size="sm">Sign In</Button></Link>
+          <Link to="/auth"><Button size="sm">Get Started</Button></Link>
         </div>
 
         <button className="md:hidden text-foreground" onClick={() => setOpen(!open)}>
@@ -49,8 +50,8 @@ const Navbar = () => {
                   {l}
                 </a>
               ))}
-              <Button variant="ghost" size="sm" className="justify-start">Sign In</Button>
-              <Button size="sm">Get Started</Button>
+              <Link to="/auth"><Button variant="ghost" size="sm" className="justify-start w-full">Sign In</Button></Link>
+              <Link to="/auth"><Button size="sm" className="w-full">Get Started</Button></Link>
             </div>
           </motion.div>
         )}
