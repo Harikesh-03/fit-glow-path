@@ -50,8 +50,8 @@ const Navbar = () => {
                   {l}
                 </a>
               ))}
-              <Button variant="ghost" size="sm" className="justify-start">Sign In</Button>
-              <Button size="sm">Get Started</Button>
+              <Link to="/auth"><Button variant="ghost" size="sm" className="justify-start w-full">Sign In</Button></Link>
+              <Link to="/auth"><Button size="sm" className="w-full">Get Started</Button></Link>
             </div>
           </motion.div>
         )}

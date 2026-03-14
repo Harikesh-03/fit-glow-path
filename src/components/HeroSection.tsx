@@ -39,10 +39,12 @@ const HeroSection = () => {
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <Button variant="hero">
-                Start Your Journey
-                <ArrowRight className="h-5 w-5" />
-              </Button>
+              <Link to="/auth">
+                <Button variant="hero">
+                  Start Your Journey
+                  <ArrowRight className="h-5 w-5" />
+                </Button>
+              </Link>
               <Button variant="heroOutline">
                 <Play className="h-4 w-4" />
                 See How It Works
